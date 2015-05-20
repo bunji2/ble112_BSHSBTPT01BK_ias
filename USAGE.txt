@@ -1,0 +1,49 @@
+iBuffaro BSHSBTPT01BK の IAS (Immediate Alert Service) の
+クライアント ias.exe の使い方。
+
+作成者：Bunji2
+更新日時：2015/05/13
+
+★他のBLE機器では多分動作しません。
+
+●コマンドラインヘルプ
+C:\work\td>ias
+ias <list|COMx> <info|scan|address <0|1|2>>
+
+●BLEDデバイスのリスト表示
+C:\work\td>ias list
+Bluegiga Bluetooth Low Energy (COM3)
+
+●BLEDデバイスの情報表示
+C:\work\td>ias COM3 info
+#ble_rsp_system_get_info
+major=1, minor=2, patch=2, build=100, ll_version=3, protocol_version=1, hw=3
+
+●スキャン（Ctrl-C で終了）
+C:\work\td>ias COM3 scan
+00:1b:dc:42:1b:39 RSSI:4294967257 Name:BSHSBTPT01BK
+Ctrl-C!
+
+●アラートレベル（0x02）の書き込み
+C:\work\td>ias COM3 00:1b:dc:42:1b:39 2
+Connecting to 00:1b:dc:42:1b:39
+#ble_evt_connection_status [connecting]
+#Connected
+
+⇒ブザー鳴動します。
+
+●アラートレベル（0x01）の書き込み
+C:\work\td>ias COM3 00:1b:dc:42:1b:39 1
+Connecting to 00:1b:dc:42:1b:39
+#ble_evt_connection_status [connecting]
+#Connected
+
+⇒バイブレーションが振動します。
+
+●アラートレベル（0x00）の書き込み
+C:\work\td>ias COM3 00:1b:dc:42:1b:39 0
+Connecting to 00:1b:dc:42:1b:39
+#ble_evt_connection_status [connecting]
+#Connected
+
+⇒ブザーやバイブレーションが停止します。

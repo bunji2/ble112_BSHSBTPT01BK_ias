@@ -1,0 +1,36 @@
+ビルド手順
+
+環境：
+・Windows 7 または Windows 8
+・Visual Studio 2010 Express
+
+手順：
+
+・Visual Studio コマンドプロンプトを起動。
+・このソースコードのあるディレクトリへ移動。
+・以下のコマンドを入力。
+
+  nmake -f bled.mak
+
+依存するDLLなど：
+
+C:\work\td\src>dumpbin /dependents ias.exe
+Microsoft (R) COFF/PE Dumper Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file ias.exe
+
+File Type: EXECUTABLE IMAGE
+
+  Image has the following dependencies:
+
+    SETUPAPI.dll
+    KERNEL32.dll
+
+  Summary
+
+        4000 .data
+        4000 .rdata
+        2000 .reloc
+        C000 .text
